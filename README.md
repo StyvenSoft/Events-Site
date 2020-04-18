@@ -7,4 +7,5 @@ Test application project to save events online with a name, a description, a tim
 
 Stack MERN, Node & Express Web Server
 
-- Express js (Doc)[https://expressjs.com/es/starter/installing.html]
+- Express js [Doc](https://expressjs.com/es/starter/installing.html)
+- MongoDB [Doc](https://docs.mongodb.com/manual/)
