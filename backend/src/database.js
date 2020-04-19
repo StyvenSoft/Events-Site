@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://localhost/eventsdb';
+const URI = process.env.MONGODB_URI
+            ? process.env.MONGODB_URI
+            : 'mongodb://localhost/databasetest';
 
 mongoose.connect(URI, {
     useUnifiedTopology: true,
