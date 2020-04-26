@@ -11,8 +11,8 @@ app.set(express.json());
 
 
 // Routers
-app.set('/api/users', (req, res) => res.send('User Routers'));
-app.set('/api/notes', (req, res) => res.send('Notes Routers'));
+app.use('/api/users', require('./routers/users'));
+app.use('/api/events', require('./routers/events'));
 
 
 module.exports = app;
