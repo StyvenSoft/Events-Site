@@ -6,7 +6,11 @@ const eventSchema = new Schema({
         type: String,
         require: true
     },
-    author: String
+    author: String,
+    date: {
+        type: date,
+        default: Date.now
+    }
 }, {
     timestamps: true
 });
