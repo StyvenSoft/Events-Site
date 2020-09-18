@@ -1,4 +1,5 @@
 const eventsCtrl = {};
+const Event = require('../models/Event');
 
 eventsCtrl.getEvents = (req, res) => res.send('Event Router');
 

@@ -1,4 +1,5 @@
 const userCtr = {};
+const User = require('../models/User');
 
 userCtr.getUsers = (req, res) => res.send('User Router');
 
