@@ -11,10 +11,12 @@ function App() {
   return (
     <Router>
       <Navigation></Navigation>
-      <Route path="/" exact component={EventsList} />
-      <Route path="/edit/:id" component={CreateEvent} />
-      <Route path="/create" component={CreateEvent} />
-      <Route path="/user" component={CreateUser} />
+      <div className="container p-4">
+        <Route path="/" exact component={EventsList} />
+        <Route path="/edit/:id" component={CreateEvent} />
+        <Route path="/create" component={CreateEvent} />
+        <Route path="/user" component={CreateUser} />
+      </div>
     </Router>
   );
 }
