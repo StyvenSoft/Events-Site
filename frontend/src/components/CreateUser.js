@@ -9,9 +9,13 @@ export default class CreateUser extends Component {
     }
 
     async componentDidMount() {
+        this.getUser();
+    }
+
+    getUser = async () => {
         const res = await axios.get('http://localhost/api/users');
-        console.log(res);
         this.setState({ users: res.data });
+        console.log(res);
     }
 
     onChangeUsername = (e) => {
@@ -20,18 +24,29 @@ export default class CreateUser extends Component {
         })
     }
 
+    onSubmit = async (e) => {
+        e.preventDefault();
+        await axios.post('http://localhost/api/users', {
+            username: this.state.username
+        });
+        this.setState({ username: '' });
+        this.getUser();
+    }
+
     render() {
         return (
             <div className="row">
                 <div className="col-md-4">
                     <div className="card card-body">
                         <h3>Create new User</h3>
-                        <form >
+                        <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <input type="text"
-                                       className="form-control"
-                                       onChange={this.onChangeUsername} />
+                                    className="form-control"
+                                    value={this.state.username}
+                                    onChange={this.onChangeUsername} />
                             </div>
+                            <button type="submit" className="btn btn-primary">Save</button>
                         </form>
                     </div>
                 </div>
