@@ -13,7 +13,7 @@ export default class CreateUser extends Component {
     }
 
     getUser = async () => {
-        const res = await axios.get('http://localhost/api/users');
+        const res = await axios.get('http://localhost:4000/api/users');
         this.setState({ users: res.data });
         console.log(res);
     }
@@ -26,7 +26,7 @@ export default class CreateUser extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost/api/users', {
+        await axios.post('http://localhost:4000/api/users', {
             username: this.state.username
         });
         this.setState({ username: '' });

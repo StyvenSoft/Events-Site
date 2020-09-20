@@ -10,10 +10,10 @@ userCtr.createUser = async (req, res) => {
     const { username } = req.body;
     const newUser = new User({username});
     await newUser.save();
-    res.json('Create User Router')
+    res.json({message: 'Create User Router'})
 };
 
-userCtr.deleteUser = (req, res) => {
+userCtr.deleteUser = async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.json('Delete User')
 };
