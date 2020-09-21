@@ -12,7 +12,7 @@ export default class Navigation extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/">Events</Link>
                             </li>
                             <li className="nav-item">
