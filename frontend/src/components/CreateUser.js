@@ -33,6 +33,11 @@ export default class CreateUser extends Component {
         this.getUser();
     }
 
+    deleteUser = async (id) => {
+        await axios.delete('http://localhost:4000/api/users/' + id);
+        this.getUser();
+    }
+
     render() {
         return (
             <div className="row">
@@ -55,7 +60,9 @@ export default class CreateUser extends Component {
                         {
                             this.state.users.map(user => (
                                 <li className="list-group-item list-group-item-action"
-                                    key={user._id}>
+                                    key={user._id}
+                                    onDoubleClick={() => this.deleteUser(user._id)}
+                                    >
                                     {user.username}
                                 </li>)
                             )
