@@ -8,6 +8,8 @@ export default class CreateEvent extends Component {
     state = {
         users: [],
         userSelected: '',
+        title: '',
+        content: '',
         date: new Date()
     }
 
@@ -17,13 +19,18 @@ export default class CreateEvent extends Component {
     }
 
     onSubmit = e => {
+        console.log(this.state.userSelected, this.state.title, this.state.content, this.state.date);
         e.preventDefault();
     }
 
-    onSubmitChange = e => {
+    onInputChange = e => {
         this.setState({
-            userSelected: e.target.value
+            [e.target.name]: e.target.value
         })
+    }
+
+    onChangeDate = date => {
+        this.setState({date});
     }
 
     render() {
@@ -34,7 +41,7 @@ export default class CreateEvent extends Component {
                     <div className="form-group">
                         <select name="userSelected"
                             className="form-control"
-                            onChange={this.onSubmitChange}
+                            onChange={this.onInputChange}
                         >
                             {
                                 this.state.users.map(user =>
@@ -49,6 +56,7 @@ export default class CreateEvent extends Component {
                             className="form-control"
                             placeholder="Title"
                             name="title"
+                            onChange={this.onInputChange}
                             required />
                     </div>
                     <div className="form-group">
@@ -57,12 +65,14 @@ export default class CreateEvent extends Component {
                             cols="30"
                             rows="10"
                             placeholder="Content"
+                            onChange={this.onInputChange}
                             required
                         ></textarea>
                     </div>
                     <div className="form-group">
                         <DatePicker className="form-control"
-                            selected={this.state.date} />
+                            selected={this.state.date}
+                            onChange={this.onChangeDate} />
                     </div>
 
                     <form onSubmit={this.onSubmit}>
