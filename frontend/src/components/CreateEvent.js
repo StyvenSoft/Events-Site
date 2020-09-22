@@ -15,12 +15,20 @@ export default class CreateEvent extends Component {
 
     async componentDidMount() {
         const res = await axios.get('http://localhost:4000/api/users');
-        this.setState({ users: res.data.map(user => user.username) });
+        this.setState({ users: res.data.map(user => user.username),
+                        userSelected: res.data[0].username });
     }
 
-    onSubmit = e => {
-        console.log(this.state.userSelected, this.state.title, this.state.content, this.state.date);
+    onSubmit = async (e) => {
         e.preventDefault();
+        const newEvent = {
+            title: this.state.title,
+            content: this.setState.content,
+            date: this.state.date,
+            author: this.state.userSelected 
+        }
+        await axios.post('http://localhost:4000/api/events', newEvent);
+        window.location.href = '/';
     }
 
     onInputChange = e => {
