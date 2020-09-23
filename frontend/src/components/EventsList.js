@@ -14,6 +14,10 @@ export default class EventsList extends Component {
         this.setState({ events: res.data })
     }
 
+    deleteEvent = (id) => {
+        console.log(id);
+    }
+
     render() {
         return (
             <div className="row">
@@ -28,6 +32,10 @@ export default class EventsList extends Component {
                                     <p>{event.content}</p>
                                     <p>{event.author}</p>
                                     <p>{format(event.date)}</p>
+                                </div>
+                                <div className="card-footer">
+                                    <div className="btn btn-darger"
+                                         onclick={() => this.onclick(event.id)}>Delete</div>
                                 </div>
                             </div>
                         </div>
