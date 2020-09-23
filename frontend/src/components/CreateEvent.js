@@ -23,7 +23,7 @@ export default class CreateEvent extends Component {
         e.preventDefault();
         const newEvent = {
             title: this.state.title,
-            content: this.setState.content,
+            content: this.state.content,
             date: this.state.date,
             author: this.state.userSelected 
         }

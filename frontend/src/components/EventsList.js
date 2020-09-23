@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { format } from 'timeago.js'
 
 export default class EventsList extends Component {
 
@@ -10,7 +11,7 @@ export default class EventsList extends Component {
     async componentDidMount() {
         const res = await axios.get('http://localhost:4000/api/events')
         console.log(res);
-        this.setState({events: res.data})
+        this.setState({ events: res.data })
     }
 
     render() {
@@ -20,8 +21,13 @@ export default class EventsList extends Component {
                     this.state.events.map(event => (
                         <div className="col-md-4 p-2" key={event._id}>
                             <div className="card">
+                                <div className="card-header">
+                                    <h5>{event.title}</h5>
+                                </div>
                                 <div className="card-body">
                                     <p>{event.content}</p>
+                                    <p>{event.author}</p>
+                                    <p>{format(event.date)}</p>
                                 </div>
                             </div>
                         </div>
