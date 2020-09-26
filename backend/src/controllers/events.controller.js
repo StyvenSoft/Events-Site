@@ -24,11 +24,12 @@ eventsCtrl.getEvent = async (req, res) => {
 };
 
 eventsCtrl.updateEvent = async (req, res) => {
-    const { title, content, author } = req.body;
+    const { title, content, author, date } = req.body;
     await Event.findOneAndUpdate({ _id: req.params.id }, {
         title,
         author,
-        content
+        content,
+        date
     });
     res.json({ message: 'Event Update' });
 };

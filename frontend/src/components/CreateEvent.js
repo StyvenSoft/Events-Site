@@ -28,7 +28,7 @@ export default class CreateEvent extends Component {
                 title: res.data.title,
                 content: res.data.content,
                 date: new Date(res.data.date),
-                userSelected: res.data.userSelected,
+                userSelected: res.data.author,
                 editing: true,
                 _id: propId
             })
@@ -45,12 +45,12 @@ export default class CreateEvent extends Component {
             author: this.state.userSelected 
         }
         if(this.state.editing) {
-            await axios.put('http://localhost:4000/api/events/' + this.state.id, newEvent);
+            await axios.put('http://localhost:4000/api/events/' + this.state._id, newEvent); 
         } else {
             await axios.post('http://localhost:4000/api/events', newEvent);
         }
     
-        window.location.href = '/';
+        this.props.history.push('/');
     }
 
     onInputChange = e => {
