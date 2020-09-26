@@ -24,7 +24,7 @@ export default class EventsList extends Component {
                 {
                     this.state.events.map(event => (
                         <div className="col-md-4 p-2" key={event._id}>
-                            <div className="card">
+                            <div className="card text-white bg-dark">
                                 <div className="card-header">
                                     <h5>{event.title}</h5>
                                 </div>
@@ -34,7 +34,7 @@ export default class EventsList extends Component {
                                     <p>{format(event.date)}</p>
                                 </div>
                                 <div className="card-footer">
-                                    <div className="btn btn-darger"
+                                    <div className="btn btn-danger"
                                          onclick={() => this.onclick(event.id)}>Delete</div>
                                 </div>
                             </div>

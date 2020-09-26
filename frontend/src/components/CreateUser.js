@@ -42,7 +42,7 @@ export default class CreateUser extends Component {
         return (
             <div className="row">
                 <div className="col-md-4">
-                    <div className="card card-body">
+                    <div className="card card-body text-white bg-dark">
                         <h3>Create new User</h3>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
@@ -59,7 +59,7 @@ export default class CreateUser extends Component {
                     <div className="list-group">
                         {
                             this.state.users.map(user => (
-                                <li className="list-group-item list-group-item-action"
+                                <li className="list-group-item list-group-item-action bg-dark text-white"
                                     key={user._id}
                                     onDoubleClick={() => this.deleteUser(user._id)}
                                     >

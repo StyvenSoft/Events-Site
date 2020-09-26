@@ -44,7 +44,7 @@ export default class CreateEvent extends Component {
     render() {
         return (
             <div className="col-md-6 offset-md-3">
-                <div className="card card-body">
+                <div className="card card-body bg-dark text-white">
                     <h4>Create a Event</h4>
                     <div className="form-group">
                         <select name="userSelected"
