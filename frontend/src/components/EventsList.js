@@ -8,14 +8,18 @@ export default class EventsList extends Component {
         events: []
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        this.getEvents();
+    }
+
+    async getEvents() {
         const res = await axios.get('http://localhost:4000/api/events')
-        console.log(res);
         this.setState({ events: res.data })
     }
 
-    deleteEvent = (id) => {
-        console.log(id);
+    deleteEvent = async (id) => {
+        await axios.delete('http://localhost:4000/api/events/' + id)
+        this.getEvents();
     }
 
     render() {
@@ -30,12 +34,12 @@ export default class EventsList extends Component {
                                 </div>
                                 <div className="card-body">
                                     <p>{event.content}</p>
-                                    <p>{event.author}</p>
+                                    <p><strong>{event.author}</strong></p>
                                     <p>{format(event.date)}</p>
                                 </div>
                                 <div className="card-footer">
                                     <div className="btn btn-danger"
-                                         onclick={() => this.onclick(event.id)}>Delete</div>
+                                         onClick={() => this.deleteEvent(event._id)}>Delete</div>
                                 </div>
                             </div>
                         </div>
