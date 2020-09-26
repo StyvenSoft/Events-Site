@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { format } from 'timeago.js'
+import { Link } from 'react-router-dom'
 
 export default class EventsList extends Component {
 
@@ -29,8 +30,10 @@ export default class EventsList extends Component {
                     this.state.events.map(event => (
                         <div className="col-md-4 p-2" key={event._id}>
                             <div className="card text-white bg-dark">
-                                <div className="card-header">
+                                <div className="card-header d-flex justify-content-between">
                                     <h5>{event.title}</h5>
+                                    <Link className="btn btn-secondary"
+                                        to={'/edit/' + event._id} >Edit</Link>
                                 </div>
                                 <div className="card-body">
                                     <p>{event.content}</p>
