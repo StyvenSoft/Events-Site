@@ -67,7 +67,7 @@ export default class CreateEvent extends Component {
         return (
             <div className="col-md-6 offset-md-3">
                 <div className="card card-body bg-dark text-white">
-                    <h4>Create a Event</h4>
+                    <h4>{this.state.editing ? "Edit a Event" : "Create a Event"}</h4>
                     <div className="form-group">
                         <select name="userSelected"
                             className="form-control"
