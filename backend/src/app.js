@@ -8,9 +8,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-// Settings
-app.set('port', process.env.PORT || 4000)
-
 // Middlewares
 app.set(cors());
 app.set(express.json());
@@ -24,6 +21,9 @@ app.use((req, res, next) => {
 // Routers
 app.use('/api/users', require('./routers/users'));
 app.use('/api/events', require('./routers/events'));
+app.get('/', (req, res, next) => {
+    res.send("Working...");
+})
 
 
 module.exports = app;
