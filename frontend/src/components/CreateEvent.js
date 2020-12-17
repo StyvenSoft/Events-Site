@@ -16,14 +16,14 @@ export default class CreateEvent extends Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('http://localhost:4000/api/users');
+        const res = await axios.get('https://server-events-site.herokuapp.com/api/users');
         const propId = this.props.match.params.id;
 
         this.setState({ users: res.data.map(user => user.username),
                         userSelected: res.data[0].username 
         });
         if(propId) {
-            const res = await axios.get('http://localhost:4000/api/events/' + propId);
+            const res = await axios.get('https://server-events-site.herokuapp.com/api/events/' + propId);
             this.setState({
                 title: res.data.title,
                 content: res.data.content,
@@ -45,9 +45,9 @@ export default class CreateEvent extends Component {
             author: this.state.userSelected 
         }
         if(this.state.editing) {
-            await axios.put('http://localhost:4000/api/events/' + this.state._id, newEvent); 
+            await axios.put('https://server-events-site.herokuapp.com/api/events/' + this.state._id, newEvent); 
         } else {
-            await axios.post('http://localhost:4000/api/events', newEvent);
+            await axios.post('https://server-events-site.herokuapp.com/api/events', newEvent);
         }
     
         this.props.history.push('/');

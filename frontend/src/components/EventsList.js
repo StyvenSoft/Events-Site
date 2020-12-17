@@ -14,12 +14,12 @@ export default class EventsList extends Component {
     }
 
     async getEvents() {
-        const res = await axios.get('http://localhost:4000/api/events')
+        const res = await axios.get('https://server-events-site.herokuapp.com/api/events')
         this.setState({ events: res.data })
     }
 
     deleteEvent = async (id) => {
-        await axios.delete('http://localhost:4000/api/events/' + id)
+        await axios.delete('https://server-events-site.herokuapp.com/api/events/' + id)
         this.getEvents();
     }
 
